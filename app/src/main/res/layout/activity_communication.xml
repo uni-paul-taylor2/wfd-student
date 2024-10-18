@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CommunicationActivity">
+
+
+
+
+    <!--wifi adapter disabled-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clWfdAdapterDisabled"
+        android:padding="32dp"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!---->
+        <TextView
+            android:id="@+id/tvWfdError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="WiFi Direct - Error"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="It seems your WiFi Direct Adapter is off. Please ensure that you turn ON WiFI in your settings!"
+            android:textSize="11sp"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvWfdError" />
+        <!---->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+    <!--client no session yet-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/studentOnboarding"
+        android:padding="32dp"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!---->
+        <TextView
+            android:id="@+id/tvStudentOnboarding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Attendance and Feedback System"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/llStudentOnboarding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/rvPeerListing"
+            app:layout_constraintTop_toBottomOf="@+id/tvStudentOnboarding" >
+
+            <EditText
+                android:id="@+id/studentID"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:inputType="text"
+                android:hint="Enter Student ID"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/btnDiscover"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="62dp"
+                android:onClick="discoverNearbyPeers"
+                android:text="Search for Classes" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvPeerListing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/llStudentOnboarding" />
+        <!---->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+    <!--server no session yet-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/serverOnboarding"
+        android:padding="32dp"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!---->
+        <TextView
+            android:id="@+id/tvServerOnboarding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Attendance and Feedback System - Teacher"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnCreateGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="62dp"
+            android:layout_marginEnd="50dp"
+            android:onClick="createGroup"
+            android:text="Start Class"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvServerOnboarding" />
+        <!---->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    <!--client chat view-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/studentChat"
+        android:padding="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!---->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvStudentChat"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/llChatSend"
+            />
+
+        <LinearLayout
+            android:id="@+id/llChatSend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <EditText
+                android:id="@+id/clientETMessage"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:inputType="text"
+                android:hint="Enter message..."
+                android:layout_height="wrap_content"
+                 />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="0.4"
+                android:text="Send"
+                android:onClick="clientSendMessage"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <!---->
+        
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    <!--server chat view-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/serverChat"
+        android:padding="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!---->
+        <TextView
+            android:id="@+id/network_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Class network: Direct-AB_abcdef \nNetwork password: 123456"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:maxLines="2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/end_class"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHeight_percent="0.10" />
+        <Button
+            android:id="@+id/end_class"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="End Class"
+            android:onClick="endGroup"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/attendees_header"
+            app:layout_constraintTop_toBottomOf="@+id/network_info"
+            app:layout_constraintHeight_percent="0.05" />
+        <TextView
+            android:id="@+id/attendees_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Attendees"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/attendees"
+            app:layout_constraintTop_toBottomOf="@+id/end_class"
+            app:layout_constraintHeight_percent="0.05" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/attendees"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/student_chat_header"
+            app:layout_constraintTop_toBottomOf="@+id/attendees_header"
+            app:layout_constraintHeight_percent="0.30" />
+
+        <TextView
+            android:id="@+id/student_chat_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Student Chat - 813123456"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/rvServerChat"
+            app:layout_constraintTop_toBottomOf="@+id/attendees"
+            app:layout_constraintHeight_percent="0.05" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvServerChat"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/studentChatSend"
+            app:layout_constraintTop_toBottomOf="@+id/student_chat_header"
+            app:layout_constraintHeight_percent="0.35" />
+
+        <LinearLayout
+            android:id="@+id/studentChatSend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rvServerChat"
+            app:layout_constraintHeight_percent="0.10">
+
+            <EditText
+                android:id="@+id/serverETMessage"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:inputType="textMultiLine"
+                android:minLines="3"
+                android:maxLines="5"
+                android:hint="Enter message..."
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="0.4"
+                android:text="Send"
+                android:onClick="serverSendMessage"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <!---->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
